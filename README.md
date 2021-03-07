@@ -1,9 +1,19 @@
-# IMPORTANT: Bug Fixes
+# Mood Ring
+## About Mood Ring
+Mood Ring is a website that uses [face-api](https://github.com/justadudewhohacks/face-api.js/) to detect facial expressions and provide text and color feedback.
 
-## `navigator.getUserMedia`
+## Installation
+To run this project locally, use the following steps
+* Clone this repository locally
+* Install serve (you will need yarn installed)
+    ```bash
+    yarn global add serve
+    ```
+* Open the command line in the repo directory and type
+    ```bash
+    serve .
+    ```
+* Mood Ring will be available at the address specified by serve
 
-`navigator.getUserMedia` is now deprecated and is replaced by `navigator.mediaDevices.getUserMedia`. To fix this bug replace all versions of `navigator.getUserMedia` with `navigator.mediaDevices.getUserMedia`
-
-## Low-end Devices Bug
-
-The video eventListener for `play` fires up too early on low-end machines, before the video is fully loaded, which causes errors to pop up from the Face API and terminates the script (tested on Debian [Firefox] and Windows [Chrome, Firefox]). Replaced by `playing` event, which fires up when the media has enough data to start playing.
+## Usage
+Simply look into the camera. For best results make sure you have proper lighting.
