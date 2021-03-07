@@ -26,7 +26,6 @@ function startVideo() {
 }
 
 video.addEventListener('play', () => {
-  console.log('playing')
   const canvas = faceapi.createCanvasFromMedia(video)
   canvas.setAttribute('id', 'camera')
   document.body.append(canvas)
@@ -34,11 +33,10 @@ video.addEventListener('play', () => {
   faceapi.matchDimensions(canvas, displaySize)
   setInterval(async () => {
     try {
-      console.log('running')
       const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
       if (detections.length) {
+        // find closest expression
         const expressions = detections[0].expressions
-        console.log(expressions)
         let closest = 0
         let closestExpr = ''
         Object.keys(expressions).forEach(expression => {
